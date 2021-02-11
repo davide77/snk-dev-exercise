@@ -1,0 +1,201 @@
+body {
+  background: $body-background-color;
+  color: $foreground-color;
+  font-family: 'DINP-R', arial, serif;
+  transition: all .4s ease-in-out;
+  &.loading{
+    opacity:0;
+    visibility:hidden;
+  }
+
+  &.loaded{
+    opacity: 1;
+    visibility:visible;
+  }
+}
+ 
+
+main {
+  color: $foreground-color;
+  text-align: center;
+  padding: 10px;
+}
+  
+
+a {
+  color: $link-color;
+}
+.container-carousel{
+  width: 100%;
+  height:50vh;
+  position: relative;
+  padding:0 120px 0 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .wrap {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+  }
+}
+.carousel {
+  display: flex;
+  left: -100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  transform: translateX(100%);
+}
+
+@media (min-width: 30em) {
+  .carousel {
+    left: -50%;
+    transform: translateX(50%);
+  }
+}
+
+@media (min-width: 40em) {
+  .carousel {
+    left: -33.33333%;
+    transform: translateX(33.33333%);
+  }
+}
+
+.carousel.is-reversing {
+  transform: translateX(-100%);
+}
+
+@media (min-width: 30em) {
+  .carousel.is-reversing {
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 40em) {
+  .carousel.is-reversing {
+    transform: translateX(-33.33333%);
+  }
+}
+
+.carousel.is-set {
+  transform: none;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-seat {
+  background: #fff;
+  flex: 1 0 100%;
+  order: 2;
+  a{
+    display: block;
+    transition:all .4s ease-in-out;
+    img{
+      transition:all .4s ease-in-out;
+      opacity: 0.8;
+    }
+    h4{
+      text-transform: uppercase;
+      font-size: 16px;
+      color:$black;
+      margin-bottom: 10px;
+    }
+    p{
+      color:$black;
+    }
+    &:hover{
+      img{
+        background-color: darken($white, 10%);
+        opacity:1;
+      }
+      
+    }
+  }
+
+}
+
+.carousel-seat:nth-child(even) {
+  background: #fff;
+}
+
+@media (min-width: 30em) {
+  .carousel-seat {
+    flex-basis: 50%;
+  }
+}
+
+@media (min-width: 40em) {
+  .carousel-seat {
+    flex-basis: 33.33333%;
+  }
+}
+
+.carousel-seat.is-ref {
+  order: 1;
+}
+
+h2 {
+  color: $black;
+  font-size: 7em;
+  font-weight: normal;
+  margin: 0;
+  padding: 0.6em 0;
+  text-align: center;
+}
+
+.controls {
+  padding: 1em;  
+  position:absolute;
+  width:80%;
+  height:100%; 
+  top:0;
+}
+
+.controls button { 
+  text-indent:-999em;
+  display:block;
+  border: 0;  
+  padding: 0.5em 1em; 
+  position:absolute; 
+  width: 60px;
+  height:60px; 
+  background:none;
+  top:50%;
+  transform: translateY(-50%);
+  z-index: 1; 
+  cursor: pointer;
+  svg{ 
+    width: 100%;
+    height: 100%;
+    left:0;
+    top:0;
+    text-indent: 0;
+    object-fit: cover;
+    position: absolute;
+    display: block;
+    transition: all .4s ease-in-out;
+  }
+
+  &.next{
+    right:0;
+    svg{
+       
+    }
+  }
+  &.prev{
+    left:0%;
+    svg{  
+    }
+    
+  }
+}
+
+.controls button:hover,
+.controls button:focus {
+   svg{
+     fill:red;
+   }
+}
