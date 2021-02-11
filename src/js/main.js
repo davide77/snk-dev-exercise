@@ -1,7 +1,9 @@
 import myJson from '../datas/recommendations.json';
 console.log("myJson: ", myJson);
 
+// wait until DOM is ready
 document.addEventListener("DOMContentLoaded", function (event) {
+    //load json first
     var dataa = myJson.productData
     var output = ''
     for (var i = 0; i < dataa.length; i++) {
@@ -9,12 +11,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
     document.getElementById('carousel').innerHTML = output
 
-
-    window.onload = function () {
+// wait until window is loaded - all images, styles-sheets, fonts, links, and other media assets
+    // you could also use addEventListener() instead
+    window.onload = function () { 
+        //add class is-ref to last child, so it can loop
         var list = document.getElementById("carousel").lastElementChild;
         list.classList.add("is-ref");
 
+
+       // OPTIONAL - waits til next tick render to run code (prevents running in the middle of render tick)
         window.requestAnimationFrame(function () {
+
+            //make the body fading in with a class loaded. css transition
              document.body.classList.add('loaded');
             document.body.classList.remove('loading');
  
